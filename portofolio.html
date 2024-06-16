@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="x-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Portfolio Website</title>
     <link rel="stylesheet" href="stylee.css">
@@ -22,7 +22,12 @@
         </nav>
     </header>
 
-    <section class="home">
+    <div class="tab-buttons">
+        <button class="tab-button active" onclick="openTab('home')">Home</button>
+        <button class="tab-button" onclick="openTab('video')">Video</button>
+    </div>
+
+    <section id="home" class="tab-content active">
         <div class="collage">
             <img src="photo1.jpg" alt="Photo 1" class="collage-img">
             <img src="photo9.jpg" alt="Photo 2" class="collage-img">
@@ -37,17 +42,56 @@
             <img src="photo2.jpg" alt="Photo 11" class="collage-img">
             <img src="photo12.jpg" alt="Photo 12" class="collage-img">
         </div>
-        <div class="btn-box">
-            <a href="https://wa.me/+6285156601316?text=haloo%2C%20walidi%0Asaya%20telah%20melihat%20portofolio%20anda%0Abisakah%20kita%20berkerjasama%20%3F">Hire Me</a>
-            <a href="https://wa.me/+6285156601316?text=hallo%2C%20walidi%0Asaya%20tertarik%20dengan%20portofolio%20anda">Let's Talk</a>
-        </div>
+    </div>
+    <div class="btn-box">
+        <a href="https://wa.me/+6285156601316?text=haloo%2C%20walidi%0Asaya%20telah%20melihat%20portofolio%20anda%0Abisakah%20kita%20berkerjasama%20%3F">Hire Me</a>
+        <a href="https://wa.me/+6285156601316?text=hallo%2C%20walidi%0Asaya%20tertarik%20dengan%20portofolio%20anda">Let's Talk</a>
+    </div>
 
-        <div class="home-sci">
-            <a href="https://www.facebook.com/walidhiii/"><img src="fbb.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com/_walidi/"><img src="igg.png" alt="Instagram"></a>
-            <a href="http://wa.me/+6285156601316"><img src="waa.png" alt="WhatsApp"></a>
+    <div class="home-sci">
+        <a href="https://www.facebook.com/walidhiii/"><img src="fbb.png" alt="Facebook"></a>
+        <a href="https://www.instagram.com/_walidi/"><img src="igg.png" alt="Instagram"></a>
+        <a href="http://wa.me/+6285156601316"><img src="waa.png" alt="WhatsApp"></a>
+    </div>
+    </section>
+
+    <section id="video" class="tab-content">
+        <div class="video-container">
+            <video controls>
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video controls>
+                <source src="video3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
+
+    <script>
+        function openTab(tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        // Set default tab
+        document.addEventListener("DOMContentLoaded", function() {
+            openTab('home');
+        });
+    </script>
 
 </body>
 </html>
